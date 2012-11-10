@@ -49,6 +49,68 @@ class Api():
         """Clears all stored endpoints"""
         self.endpoints = {}
 
+    def get(self, endpoint, url_data=None, parameters=None):
+        """Returns the response and body for a get request
+            endpoints = 'users'  # resource to access
+            url_data = {}, ()  # Used to modularize endpoints, see __init__
+            parameters = {}, ((),()) # URL parameters: google.com?q=a&f=b
+        """
+        return self.request_handler.request(
+            self._url(endpoint, url_data, parameters),
+            method=Api._method['get'],
+        )
+
+    def post(self, endpoint, data, url_data=None, parameters=None):
+        """Returns the response and body for a post request
+            endpoints = 'users'  # resource to access
+            data = {'username': 'blah, 'password': blah}  # POST body
+            url_data = {}, ()  # Used to modularize endpoints, see __init__
+            parameters = {}, ((),()) # URL paramters, ex: google.com?q=a&f=b
+        """
+        return self.request_handler.request(
+            self._url(endpoint, url_data, parameters),
+            method=Api._method['post'],
+            body=urllib.urlencode(data)
+        )
+
+    def put(self, endpoint, data, url_data=None, parameters=None):
+        """Returns the response and body for a put request
+            endpoints = 'users'  # resource to access
+            data = {'username': 'blah, 'password': blah}  # PUT body
+            url_data = {}, ()  # Used to modularize endpoints, see __init__
+            parameters = {}, ((),()) # URL paramters, ex: google.com?q=a&f=b
+        """
+        return self.request_handler.request(
+            self._url(endpoint, url_data, parameters),
+            method=Api._method['put'],
+            body=urllib.urlencode(data)
+
+        )
+
+    def delete(self, endpoint, data, url_data=None, parameters=None):
+        """Returns the response and body for a delete request
+            endpoints = 'users'  # resource to access
+            data = {'username': 'blah, 'password': blah}  # DELETE body
+            url_data = {}, ()  # Used to modularize endpoints, see __init__
+            parameters = {}, ((),()) # URL paramters, ex: google.com?q=a&f=b
+        """
+        return self.request_handler.request(
+            self._url(endpoint, url_data, parameters),
+            method=Api._method['delete'],
+            body=urllib.urlencode(data)
+        )
+
+    def head(self, endpoint, url_data=None, parameters=None):
+        """Returns the response and body for a head request
+            endpoints = 'users'  # resource to access
+            url_data = {}, ()  # Used to modularize endpoints, see __init__
+            parameters = {}, ((),()) # URL paramters, ex: google.com?q=a&f=b
+        """
+        return self.request_handler.request(
+            self._url(endpoint, url_data, parameters),
+            method=Api._method['head']
+        )
+
     def _url(self, endpoint, url_data=None, parameters=None):
         """Generate URL on the modularized endpoints and url parameters"""
         try:
