@@ -32,6 +32,18 @@ class Api():
         else:
             self.request_handler = Api._httplib2_init(username, password)
 
+    def update_endpoints(self, endpoints):
+        """"
+        Adds to the endpoints collection
+            endpoints = {
+                'get_users': 'users',
+                'classes': 'crazyURL/withExtraStuff',
+                'get_user': 'user/%(id)s'  # requires url_data
+                'get_me': 'user/3'  # Don't be afraid to hard code!
+            }
+        """
+        self.endpoints.update(endpoints)
+
     @staticmethod
     def _httplib2_init(username, password):
         """Used to instantiate a regular HTTP request object"""
