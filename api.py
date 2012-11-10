@@ -1,6 +1,6 @@
 """Api and Utilities"""
 import httplib2
-
+import urllib
 
 class Api():
     """Api Object"""
@@ -47,6 +47,19 @@ class Api():
     def clear_endpoints(self):
         """Clears all stored endpoints"""
         self.endpoints = {}
+
+    def _url(self, endpoint, url_data=None, parameters=None):
+        """Generate URL on the modularized endpoints and url parameters"""
+        try:
+            url = '%s/%s' % (self.base_url, self.endpoints[endpoint])
+        except KeyError:
+            raise EndPointDoesNotExist(endpoint)
+        if url_data:
+            url = url % url_data
+        if parameters:
+            # url = url?key=value&key=value&key=value...
+            url = '%s?%s' % (url, urllib.urlencode(parameters, True))
+        return url
 
     @staticmethod
     def _httplib2_init(username, password):
