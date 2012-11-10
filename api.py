@@ -152,4 +152,3 @@ class Api():
 class EndPointDoesNotExist(Exception):
     """Raised when the endpoint could not be found"""
     pass
-
