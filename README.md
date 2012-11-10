@@ -43,3 +43,16 @@ print(
     )
 )
 ````
+
+Style/Commiting Guide
+====================
+- Commit early, commit often.
+- PEP8
+- At the top of any scope, initialize and define any methods you will use inside it.  For objects, use None.  For primitives, use the most empty value (False, 0, '', etc.)
+    - Two spaces, and then a comment to describe what it does
+    - BEWARE, dictionaries (and most likely many others collections!) are objects, and do not get re-instantiated between object instantiation.  Make sure in __init__() you re-set them.`:w
+
+Licensing
+=========
+The code in this repository is underneath the GPLv3 license
+
