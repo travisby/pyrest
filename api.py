@@ -55,3 +55,9 @@ class Api():
         if username and password:
             obj.add_credentials(username, password)
         return obj
+
+
+class EndPointDoesNotExist(Exception):
+    """Raised when the endpoint could not be found"""
+    pass
+
