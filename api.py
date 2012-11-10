@@ -44,6 +44,10 @@ class Api():
         """
         self.endpoints.update(endpoints)
 
+    def clear_endpoints(self):
+        """Clears all stored endpoints"""
+        self.endpoints = {}
+
     @staticmethod
     def _httplib2_init(username, password):
         """Used to instantiate a regular HTTP request object"""
