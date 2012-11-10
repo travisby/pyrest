@@ -56,6 +56,9 @@ Style/Commiting Guide
     - pylint
     - pyflakes
     - pychecker
+- Code Coverage
+    - Use coverage to test our code!  100% coverage is a nice rule of thumb.
+        - coverage run --omit=tests.py --branch tests.py
 
 Licensing
 =========
