@@ -1,4 +1,4 @@
 argparse==1.2.1
 coverage==3.6
-httplib2==0.7.6
+httplib2==0.18.0
 wsgiref==0.1.2
